@@ -1,5 +1,6 @@
 import numpy as np
 
+# Thresholding in time domain
 def vertical_threshold(array, mask, initial_thr, sub_sequence):
     width, height = array.shape
     tmp_mask = np.zeros(mask.shape)
@@ -41,7 +42,7 @@ def vertical_threshold(array, mask, initial_thr, sub_sequence):
 
     return tmp_mask
 
-
+# Thresholding in frequency domain
 def horizontal_threshold(array, mask, initial_thr, sub_sequence):
     width, height = array.shape
     tmp_mask = np.zeros(mask.shape)
@@ -83,6 +84,11 @@ def horizontal_threshold(array, mask, initial_thr, sub_sequence):
 
     return tmp_mask
 
+# Function for combined method
+# initial_hor_thr: initial horizontal threshold
+# initial_ver_thr: initial vertical threshold
+# horizontal_windows: window sizes for SumThreshold in horizontal direction
+# vertical_windows: window sizes for SumThreshold in vertical direction
 def full_sum_threshold(array, mask, initial_hor_thr, initial_ver_thr, horizontal_windows, vertical_windows, p):
     if initial_ver_thr != 0:
         # Time domain
